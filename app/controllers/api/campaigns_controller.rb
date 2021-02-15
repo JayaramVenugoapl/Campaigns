@@ -13,7 +13,7 @@ module Api
 
     def create
       @campaign = current_user.campaigns.create!(campaign_params)
-      render_json({campaigns: serialize_hash(CampaignSerializer, @campaign)})
+      render_json({campaigns: serialize_hash(CampaignSerializer, @campaign)}, 201)
     end
 
     def update

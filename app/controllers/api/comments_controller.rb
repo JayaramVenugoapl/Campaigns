@@ -15,7 +15,7 @@ module Api
       @comment = current_user.comments.build(comment_params)
       @comment.campaign_id = campaign.id
       @comment.save!
-      render_json({comment: serialize_hash(CommentSerializer, @comment)})
+      render_json({comment: serialize_hash(CommentSerializer, @comment)}, 201)
     end
 
     def update

@@ -4,7 +4,7 @@ module Api
 
     def create
       @user = User.create!(user_params)
-      render_json({user: serialize_hash(UserSerializer, @users)}, 200, "User created successfully")
+      render_json({user: serialize_hash(UserSerializer, @users)}, 201, "User created successfully")
     end
 
     

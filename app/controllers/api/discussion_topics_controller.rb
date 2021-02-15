@@ -15,7 +15,7 @@ module Api
       @discussion_topic = @current_user.discussion_topics.build(discussion_topic_params)
       @discussion_topic.campaign_id = campaign.id
       @discussion_topic.save!
-      render_json({discussion_topic: serialize_hash(DiscussionTopicSerializer, @discussion_topic)})
+      render_json({discussion_topic: serialize_hash(DiscussionTopicSerializer, @discussion_topic)}, 201)
     end
 
     def update
@@ -30,11 +30,11 @@ module Api
 
     private
       def set_discussion_topic
-        @discussion_topic = campaign.discussion_topic.find(params[:id])
+        @discussion_topic = campaign.discussion_topic
       end
 
       def campaign
-        current_user.discussion_topics.includes(:discussion_topic).find(params[:campaign_id])
+        current_user.campaigns.includes(:discussion_topic).find(params[:campaign_id])
       end
 
       def discussion_topic_params

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  # include Error::ErrorHandler
+  include Error::ErrorHandler
   include ResponseHandler
   include SerializableResource
   
